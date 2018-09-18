@@ -103,6 +103,7 @@
     <Content Include="snippet.txt" />
     <Content Include="Test\agent.html" />
     <Content Include="Test\customer.html" />
+    <Content Include="Test\test.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
