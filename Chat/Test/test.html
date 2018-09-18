@@ -4,69 +4,59 @@
     <meta charset="utf-8" />
     <title></title>
     <style>
+        body {
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 11px;
+            font-style: normal;
+            font-weight: 400;
+            color: #000;
+        }
         .outerDiv {
             width: 300px;
             height: 100%;
-            margin: 50px 20px;
+            margin: 30px 20px;
         }
         .chatArea {
             height: 325px;
             border: 1px solid gray
         }
         .statusLine {
-            color: #787878;
-            font-family: Verdana, Arial, Helvetica, sans-serif;
-            font-size: 11px;
-            font-style: normal;
-            font-weight: 400;
+            color: #777;
             margin-bottom: 4px;
             margin-top: 0;
         }
         .chatEnduserLine {
-            color: #000;
-            font-family: Verdana, Arial, Helvetica, sans-serif;
-            font-size: 11px;
-            font-style: normal;
-            font-weight: 400;
             margin-bottom: 4px;
             margin-top: 0;
         }
-        .endUserName {
-            color: #000;
-            font-family: Verdana, Arial, Helvetica, sans-serif;
-            font-size: 11px;
-            font-style: normal;
+        .chatEnduserLine span {
             font-weight: 700;
         }
-        .chatAdministratorLine {
-            color: #1EA707;
-            font-family: Verdana, Arial, Helvetica, sans-serif;
-            font-size: 11px;
-            font-style: normal;
-            font-weight: 400;
+        .chatAgentLine {
+            color: Green;
             margin-bottom: 4px;
             margin-top: 0;
         }
-        .operatorUserName {
-            color: #1EA707;
-            font-family: Verdana, Arial, Helvetica, sans-serif;
-            font-size: 11px;
-            font-style: normal;
+        .chatAgentLine span {
+            color: Green;
             font-weight: 700;
         }
     </style>
 </head>
 <body>
+    <div>
+        <img src="../Images/logo.gif"/>
+    </div>
     <div class="outerDiv">
         <div id="chatarea" class="chatArea">
             <p class="statusLine">
                 Please wait. A support representative will join shortly.
             </p>
             <p class="chatEnduserLine">
-                <span class="enduserUserName">sysaid admin: </span>Hello
+                <span>User: </span>Hello
             </p>
-            <p class="chatAdministratorLine">
-                <span class="operatorUserName">sysaid admin: </span>Hello 2
+            <p class="chatAgentLine">
+                <span>Admin: </span>Hello 2
             </p>
         </div>
         <div style="margin-top:5px">

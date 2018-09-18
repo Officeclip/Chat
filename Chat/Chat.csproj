@@ -90,6 +90,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="ChatSnippet.ashx" />
+    <Content Include="Images\logo.gif" />
     <Content Include="Images\notify.ogg" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Images\chat-offline.png" />
