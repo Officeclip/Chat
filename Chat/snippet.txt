@@ -1,10 +1,10 @@
 ﻿This code needs to be added in the file
 
-<span id="chatImageSpan"></span>
+<span id="chatImageTop"></span>
 <script type="text/javascript">
         var chatRoot="http://localhost/chat/";
-        offlineImage="http://localhost/chat/images/chat-offline.png";
-        onlineImage ="http://localhost/chat/images/chat-online.png";
+        var offlineImage="http://localhost/chat/images/chat-offline.png";
+        var onlineImage ="http://localhost/chat/images/chat-online.png";
     </script>
     <script type="text/javascript" src="http://localhost/chat/ChatSnippet.ashx"></script>
 
