@@ -88,8 +88,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="endUserSignup.aspx" />
     <Content Include="Global.asax" />
     <Content Include="ChatSnippet.ashx" />
+    <Content Include="Images\alert.png" />
+    <Content Include="Images\chat.png" />
     <Content Include="Images\logo.gif" />
     <Content Include="Images\notify.ogg" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
@@ -113,6 +116,13 @@
       <DependentUpon>ChatSnippet.ashx</DependentUpon>
     </Compile>
     <Compile Include="ChatUser.cs" />
+    <Compile Include="endUserSignup.aspx.cs">
+      <DependentUpon>endUserSignup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="endUserSignup.aspx.designer.cs">
+      <DependentUpon>endUserSignup.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
