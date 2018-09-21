@@ -32,7 +32,7 @@ namespace OfficeClip.LiveChat.Chat
             AgentConnection.showWaitingForChat();
         }
 
-        public string PopulateCustomer(string name, string email)
+        public void PopulateCustomer(string name, string email)
         {
             customer.Name = name;
             customer.Email = email;
@@ -40,13 +40,14 @@ namespace OfficeClip.LiveChat.Chat
             if (agent.IsAvailable)
             {
                 AgentConnection.showAcceptForChat();
-                CustomerConnection.showWaitingForAgent();
+                CustomerConnection.showStatusLine(
+                    "Please wait for an agent to come online");
             }
             else
             {
-                CustomerConnection.showNoAgentAvailable();
+                CustomerConnection.showStatusLine(
+                    "No agent is currently available");
             }
-            return customer.ConnectionId;
         }
 
         public void AgentAccepts()
@@ -84,13 +85,13 @@ namespace OfficeClip.LiveChat.Chat
             CustomerRemove();
         }
 
-        public void Send(string name, string message)
+        public void Send(string name, string message, bool fromCustomer)
         {
             if (!isConnected) {
                 return;
             }
-            CustomerConnection.broadcastMessage(name, message);
-            AgentConnection.broadcastMessage(name, message);
+            CustomerConnection.broadcastMessage(name, message, fromCustomer);
+            AgentConnection.broadcastMessage(name, message, fromCustomer);
         }
     }
 }

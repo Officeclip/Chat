@@ -101,7 +101,7 @@
                 $('#discussion').append('<li>Chat ended by customer</li>');
             };
 
-            chat.client.broadcastMessage = function (name, message) {
+            chat.client.broadcastMessage = function (name, message, fromCustomer) {
                 // Html encode display name and message.
                 var encodedName = $('<div />').text(name).html();
                 var encodedMsg = $('<div />').text(message).html();
@@ -112,7 +112,7 @@
 
             $('#sendmessage').click(function () {
                 // Call the Send method on the hub.
-                chat.server.send($('#name').val(), $('#message').val());
+                chat.server.send($('#name').val(), $('#message').val(), false);
                 // Clear text box and reset focus for next comment.
                 $('#message').val('').focus();
             });
