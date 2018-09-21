@@ -64,10 +64,7 @@
 
         chat.client.showStatusLine =
             function (statusString) {
-                $(".chatArea").append(
-                    '<p class="statusLine">'
-                    + statusString
-                    + '</p>');
+                showClientMessage('', statusString, "statusLine");
             };
 
         isCookiePresent = function () {
@@ -77,22 +74,50 @@
                 cookiePresent !== null);
         };
 
-        chat.client.broadcastMessage = function (name, message, fromCustomer) {
-            var encodedName = $('<div />').text(name).html();
+        showClientMessage = function (name, message, chatClass) {
+            var encodedName = '';
+            if (name !== '') {
+                encodedName = $('<div />').text(name).html() + ": ";
+            }
             var encodedMsg = $('<div />').text(message).html();
-            var chatClass =
-                fromCustomer
-                    ? "chatEnduserLine"
-                    : "chatAgentLine";
-
             $(".chatArea").append(
                 '<p class="'
                 + chatClass
                 + '">'
                 + encodedName
-                + ': '
                 + encodedMsg
                 + '</p>');
+        };
+
+        chat.client.showChatEndMessage = function () {
+            showClientMessage(
+                "",
+                "The chat has ended",
+                "statusLine"
+            );
+        };
+
+
+
+        chat.client.broadcastMessage = function (name, message, fromCustomer) {
+            var chatClass =
+                fromCustomer
+                    ? "chatEnduserLine"
+                    : "chatAgentLine";
+
+            showClientMessage(encodedName, encodedMsg, chatClass);
+        };
+
+        chat.client.enableChat = function () {
+
+        };
+
+        chat.client.showAgentAvailableMessage = function (name) {
+            showClientMessage(
+                '',
+                "Agent " + name + " has joined the chat",
+                "statusLine"
+            );
         };
 
         btnSendClick = function () {
@@ -112,7 +137,6 @@
 
             }).fail(function () { alert("signalR connection failed"); });
 
-
     </script>
 
 </head>
@@ -124,13 +148,13 @@
         <div id="chatarea" class="chatArea">
         </div>
         <div style="margin-top: 5px">
-                <div>
-                    <textarea id="chatText" rows="5" style="width: 100%"></textarea>
-                </div>
-                <div style="margin-top: 5px; text-align: right">
-                    <button>Close</button>
-                    <button id="btnSend" onclick="btnSendClick()">Send</button>
-                </div>
+            <div>
+                <textarea id="chatText" rows="5" style="width: 100%"></textarea>
+            </div>
+            <div style="margin-top: 5px; text-align: right">
+                <button>Close</button>
+                <button id="btnSend" onclick="btnSendClick()">Send</button>
+            </div>
         </div>
     </div>
 </body>
