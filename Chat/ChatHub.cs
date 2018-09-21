@@ -32,7 +32,7 @@ namespace OfficeClip.LiveChat.Chat
             AgentConnection.showWaitingForChat();
         }
 
-        public void PopulateCustomer(string name, string email)
+        public string PopulateCustomer(string name, string email)
         {
             customer.Name = name;
             customer.Email = email;
@@ -46,6 +46,7 @@ namespace OfficeClip.LiveChat.Chat
             {
                 CustomerConnection.showNoAgentAvailable();
             }
+            return customer.ConnectionId;
         }
 
         public void AgentAccepts()

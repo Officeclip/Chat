@@ -26,7 +26,7 @@ namespace OfficeClip.LiveChat.Chat
                 (!IsAgentAvailable)
                 ? System.Drawing.Color.Red
                 : System.Drawing.Color.Green;
-            btnSend.Attributes.Add("onclick", "return btnClick();");
+            btnSend.Attributes.Add("onclick", "btnClick();");
         }
         protected void btnSendClick(object sender, EventArgs e)
         {

@@ -35,6 +35,7 @@
             var email = $("#inpEmail").val();
             Cookies.set("name", name, { expires: 1 });
             Cookies.set("email", email, { expires: 1 });
+            return false;
         };
 
         isCookiePresent = function () {
@@ -95,8 +96,8 @@
                 <div style="padding-top: 20px"></div>
                 <div class="row">
                     <div class="cell" style="margin-left: 20px">
-                        <button id="btnSend" runat="server"
-                            onserverclick="btnSendClick">
+                        <button id="btnSend" runat="server" type="submit"
+                            onserverclick="btnSendClick" >
                             Send</button>
                     </div>
                 </div>
