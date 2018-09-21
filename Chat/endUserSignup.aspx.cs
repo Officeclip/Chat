@@ -26,10 +26,11 @@ namespace OfficeClip.LiveChat.Chat
                 (!IsAgentAvailable)
                 ? System.Drawing.Color.Red
                 : System.Drawing.Color.Green;
+            btnSend.Attributes.Add("onclick", "return btnClick();");
         }
         protected void btnSendClick(object sender, EventArgs e)
         {
-            Response.Redirect("http://www.google.com");
+            Response.Redirect("endUserChat.aspx");
         }
     }
 }

@@ -14,7 +14,7 @@ namespace OfficeClip.LiveChat.Chat
         {
             string snippet = @"
                 var chatImageTop = document.getElementById('chatImageTop');  
-                chatImageTop.innerHTML = ""<a href='javascript:void(0);' onclick='javascript:window.open(chatRoot + \""customer.html\"",\""\"",\""width=400px,height=660px,toolbar=no,resizable=yes,scrollbars=yes,directories=no,menubar=no,location=no\"")'><img src='' border='0' style='cursor:pointer' alt='ChatImage' id='ChatImage' name='ChatImage'/></a>"";  
+                chatImageTop.innerHTML = ""<a href='javascript:void(0);' onclick='javascript:window.open(chatRoot + \""endUserSignup.aspx\"",\""\"",\""width=400px,height=660px,toolbar=no,resizable=yes,scrollbars=yes,directories=no,menubar=no,location=no\"")'><img src='' border='0' style='cursor:pointer' alt='ChatImage' id='ChatImage' name='ChatImage'/></a>"";  
                 var chatImage = document.getElementById('ChatImage');
                 chatImage.src = {0};
             ";

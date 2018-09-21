@@ -27,6 +27,32 @@
             display: table-cell;
         }
     </style>
+    <script type="text/javascript" src="Scripts/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="Scripts/js.cookie.js"></script>
+    <script type="text/javascript">
+        btnClick = function () {
+            var name = $("#inpName").val();
+            var email = $("#inpEmail").val();
+            Cookies.set("name", name, { expires: 1 });
+            Cookies.set("email", email, { expires: 1 });
+        };
+
+        isCookiePresent = function () {
+                var cookiePresent = Cookies.get("name");
+                return (
+                    typeof (cookiePresent) !== 'undefined' &&
+                    cookiePresent !== null);
+            };
+
+        $(document).ready(function () {
+            if (isCookiePresent()) {
+                var name = Cookies.get("name");
+                var email = Cookies.get("email");
+                $("#inpName").val(name);
+                $("#inpEmail").val(email);
+            }
+        });
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -69,7 +95,9 @@
                 <div style="padding-top: 20px"></div>
                 <div class="row">
                     <div class="cell" style="margin-left: 20px">
-                        <button id="btnSend" runat="server" onserverclick="btnSendClick">Send</button>
+                        <button id="btnSend" runat="server"
+                            onserverclick="btnSendClick">
+                            Send</button>
                     </div>
                 </div>
             </div>
