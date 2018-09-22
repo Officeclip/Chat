@@ -10,6 +10,7 @@ namespace OfficeClip.LiveChat.Chat
         public string Name { get; set; }
         public string Email { get; set; }
         public string ConnectionId { get; set; }
+        public bool IsEndUser { get; set; }
         public bool IsAvailable
         {
             get

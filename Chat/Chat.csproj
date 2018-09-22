@@ -107,6 +107,7 @@
     <Content Include="Scripts\jquery.signalR-2.3.0.min.js" />
     <Content Include="Scripts\js.cookie.js" />
     <Content Include="snippet.txt" />
+    <Content Include="Sql\queries.sql" />
     <Content Include="Sql\schema.sql" />
     <Content Include="Test\agent.html" />
     <Content Include="Test\customer.html" />
@@ -115,6 +116,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChatDb.cs" />
     <Compile Include="ChatHub.cs" />
     <Compile Include="ChatSnippet.ashx.cs">
       <DependentUpon>ChatSnippet.ashx</DependentUpon>
