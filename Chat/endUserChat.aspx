@@ -74,19 +74,23 @@
                 cookiePresent !== null);
         };
 
+        encodedValue = function (value) {
+            return $("<div />").text(value).html();
+        };
+
         showClientMessage = function (name, message, chatClass) {
-            var encodedName = '';
-            if (name !== '') {
-                encodedName = $('<div />').text(name).html() + ": ";
-            }
-            var encodedMsg = $('<div />').text(message).html();
-            $(".chatArea").append(
+            var encodedName =
+                (name !== '')
+                    ? encodedValue(name) + ': '
+                    : '';
+            var innerMessage =
                 '<p class="'
-                + chatClass
-                + '">'
-                + encodedName
-                + encodedMsg
-                + '</p>');
+                    + chatClass
+                    + '">'
+                    + encodedName
+                    + encodedValue(message)
+                    + '</p>';
+            $(".chatArea").append(innerMessage);
         };
 
         chat.client.showChatEndMessage = function () {
@@ -97,15 +101,16 @@
             );
         };
 
-
-
         chat.client.broadcastMessage = function (name, message, fromCustomer) {
             var chatClass =
                 fromCustomer
                     ? "chatEnduserLine"
                     : "chatAgentLine";
 
-            showClientMessage(encodedName, encodedMsg, chatClass);
+            showClientMessage(
+                name,
+                message,
+                chatClass);
         };
 
         chat.client.enableChat = function () {
@@ -122,6 +127,7 @@
 
         btnSendClick = function () {
             chat.server.send(name, $("#chatText").val(), true);
+            $('#chatText').val('').focus();
         };
 
         // Start the connection.
