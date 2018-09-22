@@ -88,6 +88,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Agent.aspx" />
     <Content Include="endUserChat.aspx" />
     <Content Include="endUserSignup.aspx" />
     <Content Include="Global.asax" />
@@ -116,6 +117,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agent.aspx.cs">
+      <DependentUpon>Agent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent.aspx.designer.cs">
+      <DependentUpon>Agent.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ChatDb.cs" />
     <Compile Include="ChatHub.cs" />
     <Compile Include="ChatSnippet.ashx.cs">
