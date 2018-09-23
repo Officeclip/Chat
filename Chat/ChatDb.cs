@@ -94,9 +94,7 @@ namespace OfficeClip.LiveChat.Chat
                     ChatSessionId = Convert.ToInt32(dRow["chatSessionId"]),
                     EndUserName = (string)dRow["Name"],
                     EndUserEmail = (string)dRow["Email"],
-                    StartTime = (Convert.IsDBNull(dRow["startTime"]))
-                                    ? (DateTime?)null
-                                    : Convert.ToDateTime(dRow["startTime"]),
+                    StartTime = Convert.ToDateTime(dRow["startTime"]),
                     EndTime = (Convert.IsDBNull(dRow["endTime"]))
                                     ? (DateTime?)null
                                     : Convert.ToDateTime(dRow["endTime"]),
@@ -107,6 +105,18 @@ namespace OfficeClip.LiveChat.Chat
             return chatSessions;
         }
 
-
+        public void UpdateUserConnection(int userId, string connectionId)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("InsUserConnectionChatSP", conn))
+                {
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    cmd.Parameters.AddWithValue("@connectionId", connectionId);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

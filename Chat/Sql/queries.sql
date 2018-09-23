@@ -29,7 +29,7 @@ AS
 		SET @endUserId = (SELECT scope_identity())
 	END
 	INSERT INTO chatsessions
-	(end_user_id, custom_value, start_time, is_active)
+	(end_user_id, custom_value, start_time, mode)
 	VALUES
 	(@endUserId, @customValue, GETDATE(), 1)
 	SET @chatSessionId = (SELECT scope_identity())
@@ -115,5 +115,32 @@ AS
 GO
 
 GRANT EXEC ON GetActiveSessonsChatSP TO PUBLIC
+GO
+---------------------------
+IF EXISTS (SELECT * FROM sysobjects WHERE type = 'P' AND name = 'InsUserConnectionChatSP')
+BEGIN
+	PRINT 'Dropping Procedure InsUserConnectionChatSP'
+	DROP  Procedure  InsUserConnectionChatSP
+END
+
+GO
+
+PRINT 'Creating Procedure InsUserConnectionChatSP'
+GO
+
+Create Procedure InsUserConnectionChatSP
+(
+	@userId int,
+	@connectionId varchat(25)
+)
+AS
+UPDATE endusers
+SET
+	connection_id = @connectionId
+WHERE
+	end_user_id = @userId
+GO
+
+GRANT EXEC ON InsUserConnectionChatSP TO PUBLIC
 GO
 ---------------------------
