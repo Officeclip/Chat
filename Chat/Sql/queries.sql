@@ -55,4 +55,65 @@ GO
 
 GRANT EXEC ON GetUsersChatSP TO PUBLIC
 GO
+--------------------------------------------
+IF EXISTS (SELECT * FROM sysobjects WHERE type = 'P' AND name = 'GetEndUsersChatSP')
+BEGIN
+	PRINT 'Dropping Procedure GetEndUsersChatSP'
+	DROP  Procedure  GetEndUsersChatSP
+END
+
+GO
+
+PRINT 'Creating Procedure GetEndUsersChatSP'
+GO
+
+Create Procedure GetEndUsersChatSP
+AS
+	SELECT * from endusers
+GO
+
+GRANT EXEC ON GetEndUsersChatSP TO PUBLIC
+GO
+---------------------------
+IF EXISTS (SELECT * FROM sysobjects WHERE type = 'P' AND name = 'GetActiveSessonsChatSP')
+BEGIN
+	PRINT 'Dropping Procedure GetActiveSessonsChatSP'
+	DROP  Procedure  GetActiveSessonsChatSP
+END
+
+GO
+
+PRINT 'Creating Procedure GetActiveSessonsChatSP'
+GO
+
+Create Procedure GetActiveSessonsChatSP
+(
+	@isActive bit
+)
+AS
+	SELECT 
+		chat_session_id as chatSessionId, 
+		endusers.name as name, 
+		endusers.email as email, 
+		start_time as startTime, 
+		end_time as endTime, 
+		mode as endUserMode
+	FROM 
+		chatsessions 
+	INNER JOIN 
+		endusers 
+	ON
+		chatsessions.end_user_id = endusers.end_user_id
+	WHERE 
+		(@isActive = 1)
+		AND (mode = 3)
+		OR 
+			(@isActive = 0)
+			AND (
+				(mode = 1) 
+				OR (mode = 2))
+GO
+
+GRANT EXEC ON GetActiveSessonsChatSP TO PUBLIC
+GO
 ---------------------------

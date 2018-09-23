@@ -21,7 +21,7 @@ CREATE TABLE [dbo].[chatsessions] (
     [custom_value] NVARCHAR (25) NULL,
     [start_time]   DATETIME      NULL,
     [end_time]     DATETIME      NULL,
-    [is_active]    BIT           NULL,
+    [mode]    INT				NULL, -- 1: Waiting, 2: Connected, 3: Ended
     CONSTRAINT [FK_chatconnection_endusers] FOREIGN KEY ([end_user_id]) REFERENCES [dbo].[endusers] ([end_user_id]), 
     CONSTRAINT [PK_chatsessions] PRIMARY KEY ([chat_session_id])
 );

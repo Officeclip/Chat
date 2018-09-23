@@ -11,6 +11,7 @@ namespace OfficeClip.LiveChat.Chat
         public string Email { get; set; }
         public string ConnectionId { get; set; }
         public bool IsEndUser { get; set; }
+        public EndUserMode EndUserMode { get; set; }
         public bool IsAvailable
         {
             get
@@ -25,5 +26,13 @@ namespace OfficeClip.LiveChat.Chat
             Email = string.Empty;
             ConnectionId = string.Empty;
         }
+    }
+
+    public enum EndUserMode
+    {
+        None = 0,
+        Waiting = 1,
+        Connected = 2,
+        Ended = 3
     }
 }
