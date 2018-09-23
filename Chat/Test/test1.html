@@ -2,6 +2,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta http-equiv="Content-Language" content="en">
     <title></title>
     <style>
         body {
@@ -48,7 +51,43 @@
         .userInfo {
             width: 200px;
         }
+
+        .gridRow {
+            display: grid;
+            grid-template-columns: minmax(auto, 50%) 25% 25%;
+            border-bottom: 1px solid lightgray;
+            white-space:nowrap;
+        }
+
+        button{
+            font-size:12px;
+            margin: 5px 5px 0 0;
+        }
     </style>
+    <script type="text/javascript" src="../Scripts/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript">
+        var json = [
+            ["SK Dutta<br/>skd@officeclip.com", "Sep 24, 2018<br/>10:15PM", "<button>Release</button><button>End</button>"],
+            ["John Doe<br/>jdoe@jd.com", "Jan 18, 2018<br/>9:04AM", "<button>Accept</button><button>End</button>"]
+        ];
+
+        arrayToGrid = function (gridData) {
+            var grid = $('<div></div>');
+            $(gridData).each(function (i, rowData) {
+                var row = $('<div class="gridRow"></div>');
+                $(rowData).each(function (j, cellData) {
+                    row.append($('<div>' + cellData + '</div>'));
+                });
+                grid.append(row);
+            });
+            return grid;
+        };
+
+        $(document).ready(function () {
+            $('.topRow').append(arrayToGrid(json));
+        });
+
+    </script>
 </head>
 <body>
     <div class="container">
@@ -76,11 +115,8 @@
         </div>
         <div class="column column-3">
             <div>
-                <div style="text-align:center; font-weight: bold; height: 150px">
-                    <div style="display:grid;grid-template-columns: minmax(auto, 50%) 25% 25%;">
-                        <div style="display:flex">skdutta@gmail.com</div>
-                        <div style="display:flex">10:15PM</div>
-                        <div style="display:flex">Accept</div>
+                <div style="text-align:center; height: 200px">
+                    <div class="topRow">
                     </div>
                 </div>
                 <div style="text-align:center; font-weight: bold;">
