@@ -118,5 +118,28 @@ namespace OfficeClip.LiveChat.Chat
                 }
             }
         }
+
+        public int InsertSession(
+                    ChatUser chatUser)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("InsSessionChatSP", conn))
+                {
+                    cmd.Parameters.AddWithValue("@userName", chatUser.Name);
+                    cmd.Parameters.AddWithValue("@emailAddress", chatUser.Email);
+                    cmd.Parameters.AddWithValue("@customValue", chatUser.CustomValue);
+                    cmd.Parameters.AddWithValue("@connectionId", chatUser.ConnectionId);
+                    SqlParameter outPutParameter = new SqlParameter();
+                    outPutParameter.ParameterName = "@chatSessionId";
+                    outPutParameter.SqlDbType = SqlDbType.Int;
+                    outPutParameter.Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add(outPutParameter);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    return (int)outPutParameter.Value;
+                }
+            }
+        }
     }
 }

@@ -7,11 +7,14 @@ namespace OfficeClip.LiveChat.Chat
 {
     public class ChatUser
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
+        public string CustomValue { get; set; }
         public string ConnectionId { get; set; }
         public bool IsEndUser { get; set; }
         public EndUserMode EndUserMode { get; set; }
+
         public bool IsAvailable
         {
             get
