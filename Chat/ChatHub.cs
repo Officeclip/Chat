@@ -42,7 +42,8 @@ namespace OfficeClip.LiveChat.Chat
             agent.Email = email;
             agent.ConnectionId = Context.ConnectionId;
 
-            AgentConnection.showWaitingForChat();
+            //AgentConnection.showWaitingForChat();
+            AgentConnection.showAvailableAgent(ActiveSessionsJson);
         }
 
         public bool AgentAvailable
@@ -64,7 +65,8 @@ namespace OfficeClip.LiveChat.Chat
 
             if (agent.IsAvailable)
             {
-                AgentConnection.showAcceptForChat();
+                AgentConnection.showAvailableAgent(ActiveSessionsJson);
+                //AgentConnection.showAcceptForChat();
                 CustomerConnection.showStatusLine(
                     "Please wait for an agent to come online");
             }
