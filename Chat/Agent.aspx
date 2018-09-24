@@ -83,7 +83,6 @@
                     chat.server
                         .populateAgent();
             }).fail(function () { alert("signalR connection failed"); });
-
     </script>
     <script type="text/javascript">
         //var json = [

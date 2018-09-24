@@ -97,6 +97,7 @@
     <Content Include="Images\chat.png" />
     <Content Include="Images\logo.gif" />
     <Content Include="Images\notify.ogg" />
+    <None Include="db.config.ocbuild" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Images\chat-offline.png" />
     <Content Include="Images\chat-online.png" />

@@ -111,6 +111,7 @@ namespace OfficeClip.LiveChat.Chat
             {
                 using (SqlCommand cmd = new SqlCommand("InsUserConnectionChatSP", conn))
                 {
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@userId", userId);
                     cmd.Parameters.AddWithValue("@connectionId", connectionId);
                     conn.Open();
@@ -126,6 +127,7 @@ namespace OfficeClip.LiveChat.Chat
             {
                 using (SqlCommand cmd = new SqlCommand("InsSessionChatSP", conn))
                 {
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@userName", chatUser.Name);
                     cmd.Parameters.AddWithValue("@emailAddress", chatUser.Email);
                     cmd.Parameters.AddWithValue("@customValue", chatUser.CustomValue);
