@@ -23,7 +23,7 @@ namespace OfficeClip.LiveChat.Chat
             DataSet ds = new DataSet();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                SqlCommand sqlComm = new SqlCommand("GetUsersSP", conn);
+                SqlCommand sqlComm = new SqlCommand("GetUsersChatSP", conn);
 
                 sqlComm.CommandType = CommandType.StoredProcedure;
 
@@ -37,7 +37,8 @@ namespace OfficeClip.LiveChat.Chat
                 ChatUser chatUser = new ChatUser()
                 {
                     Name = (string)dRow["Name"],
-                    Email = (string)dRow["Email"]
+                    Email = (string)dRow["Email"],
+                    Id = (int)dRow["user_id"]
                 };
                 chatUsers.Add(chatUser);
             }
@@ -77,7 +78,7 @@ namespace OfficeClip.LiveChat.Chat
             DataSet ds = new DataSet();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                SqlCommand sqlComm = new SqlCommand("GetEndUsersSP", conn);
+                SqlCommand sqlComm = new SqlCommand("GetEndUsersChatSP", conn);
                 sqlComm.Parameters.Add(
                     new SqlParameter("@isActive", isActive));
                 sqlComm.CommandType = CommandType.StoredProcedure;

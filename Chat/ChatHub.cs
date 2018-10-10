@@ -28,23 +28,36 @@ namespace OfficeClip.LiveChat.Chat
             }
         }
 
-        public void PopulateAgent()
-        {
-            List<ChatUser> users = (new ChatDb()).GetUsers();
-            var user = users.Where(s => s.Id == AgentUserId).FirstOrDefault();
-            (new ChatDb()).UpdateUserConnection(user.Id, Context.ConnectionId);
-            PopulateAgent(user.Name, user.Email);
-        }
-
         public void PopulateAgent(string name, string email)
         {
-            agent.Name = name;
-            agent.Email = email;
+            List<ChatUser> users = (new ChatDb()).GetUsers();
+            var user = users.Where(s => s.Email == email).FirstOrDefault();
+            agent.Name = user.Name;
+            agent.Email = user.Email;
             agent.ConnectionId = Context.ConnectionId;
 
-            //AgentConnection.showWaitingForChat();
-            AgentConnection.showAvailableAgent(ActiveSessionsJson);
+            (new ChatDb()).UpdateUserConnection(agent.Id, agent.ConnectionId);
+            if (customer.IsAvailable)
+            {
+                AgentConnection.showAcceptForChat();
+            }
+            else
+            {
+                AgentConnection.showWaitingForChat();
+            }
+            //PopulateAgent(user.Name, user.Email);
         }
+
+        //public void PopulateAgent(string name, string email)
+        //{
+        //    agent.Name = name;
+        //    agent.Email = email;
+        //    agent.ConnectionId = Context.ConnectionId;
+        //    PopulateAgent(agent);
+
+            //AgentConnection.showWaitingForChat();
+            //AgentConnection.showAvailableAgent(ActiveSessionsJson);
+        //}
 
         public bool AgentAvailable
         {

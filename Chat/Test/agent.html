@@ -14,9 +14,9 @@
 <body>
     <div id="login">
         Name:
-        <input id="name" type="text" /><br />
+        <input id="name" type="text" value="Agent 1" /><br />
         Email:
-        <input id="email" type="text" /><br />
+        <input id="email" type="text" value="agent1@officeclip.com" /><br />
         <input id="btn" type="button" value="Send" />
     </div>
     <div id="waiting">
@@ -66,6 +66,7 @@
  
             $("#btn").click(function () {
                 chat.server.populateAgent($('#name').val(), $('#email').val());
+                //chat.server.populateAgent();
                 $("#login").hide();
                 $('#waiting').show();
             });
