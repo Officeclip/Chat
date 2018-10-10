@@ -105,10 +105,10 @@ AS
 	ON
 		chatsessions.end_user_id = endusers.end_user_id
 	WHERE 
-		(@isActive = 1)
+		(@isActive = 0)
 		AND (mode = 3)
 		OR 
-			(@isActive = 0)
+			(@isActive = 1)
 			AND (
 				(mode = 1) 
 				OR (mode = 2))

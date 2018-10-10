@@ -37,14 +37,16 @@ namespace OfficeClip.LiveChat.Chat
             agent.ConnectionId = Context.ConnectionId;
 
             (new ChatDb()).UpdateUserConnection(agent.Id, agent.ConnectionId);
-            if (customer.IsAvailable)
-            {
-                AgentConnection.showAcceptForChat();
-            }
-            else
-            {
-                AgentConnection.showWaitingForChat();
-            }
+            AgentConnection.showAvailableAgent(ActiveSessionsJson);
+
+            //if (customer.IsAvailable)
+            //{
+            //    AgentConnection.showAcceptForChat();
+            //}
+            //else
+            //{
+            //    AgentConnection.showWaitingForChat();
+            //}
             //PopulateAgent(user.Name, user.Email);
         }
 
@@ -55,8 +57,8 @@ namespace OfficeClip.LiveChat.Chat
         //    agent.ConnectionId = Context.ConnectionId;
         //    PopulateAgent(agent);
 
-            //AgentConnection.showWaitingForChat();
-            //AgentConnection.showAvailableAgent(ActiveSessionsJson);
+        //AgentConnection.showWaitingForChat();
+        //AgentConnection.showAvailableAgent(ActiveSessionsJson);
         //}
 
         public bool AgentAvailable
@@ -78,8 +80,6 @@ namespace OfficeClip.LiveChat.Chat
 
             if (agent.IsAvailable)
             {
-                AgentConnection.showAvailableAgent(ActiveSessionsJson);
-                //AgentConnection.showAcceptForChat();
                 CustomerConnection.showStatusLine(
                     "Please wait for an agent to come online");
             }

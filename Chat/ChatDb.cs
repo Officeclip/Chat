@@ -78,7 +78,7 @@ namespace OfficeClip.LiveChat.Chat
             DataSet ds = new DataSet();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                SqlCommand sqlComm = new SqlCommand("GetEndUsersChatSP", conn);
+                SqlCommand sqlComm = new SqlCommand("GetActiveSessonsChatSP", conn);
                 sqlComm.Parameters.Add(
                     new SqlParameter("@isActive", isActive));
                 sqlComm.CommandType = CommandType.StoredProcedure;
@@ -99,7 +99,7 @@ namespace OfficeClip.LiveChat.Chat
                     EndTime = (Convert.IsDBNull(dRow["endTime"]))
                                     ? (DateTime?)null
                                     : Convert.ToDateTime(dRow["endTime"]),
-                    EndUserMode = (EndUserMode)Convert.ToInt32(dRow["mode"])
+                    EndUserMode = (EndUserMode)Convert.ToInt32(dRow["endUserMode"])
                 };
                 chatSessions.Add(chatSession);
             }
