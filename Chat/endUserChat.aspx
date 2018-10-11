@@ -78,6 +78,14 @@
             return $("<div />").text(value).html();
         };
 
+        $.connection.hub.connectionSlow = function(){console.log("[" + (new Date()).toString() + "] SignalR Connection Slow");};
+        $.connection.hub.reconnecting = function(){console.log("[" + (new Date()).toString() + "] SignalR Connection Reconnecting"); };
+        $.connection.hub.reconnected = function(){console.log("[" + (new Date()).toString() + "] SignalR Connection Reconnected");};
+        $.connection.hub.disconnected = function(){console.log("[" + (new Date()).toString() + "] SignalR Connection Disconnected"); };
+        $.connection.hub.stateChanged = function () { console.log("[" + (new Date()).toString() + "] SignalR StateChange") };
+        $.connection.hub.logging = true;
+        
+
         showClientMessage = function (name, message, chatClass) {
             var encodedName =
                 (name !== '')
@@ -130,6 +138,12 @@
             $('#chatText').val('').focus();
         };
 
+        btnCloseClick = function () {
+            alert("connection is stopping");
+            $.connection.hub.stop(false);
+        };
+
+
         // Start the connection.
         $.connection.hub.start().done
             (function () {
@@ -158,7 +172,7 @@
                 <textarea id="chatText" rows="5" style="width: 100%"></textarea>
             </div>
             <div style="margin-top: 5px; text-align: right">
-                <button>Close</button>
+                <button id="btnClose" onclick="btnCloseClick()">Close</button>
                 <button id="btnSend" onclick="btnSendClick()">Send</button>
             </div>
         </div>

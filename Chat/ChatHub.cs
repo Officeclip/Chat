@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace OfficeClip.LiveChat.Chat
 {
@@ -11,6 +12,12 @@ namespace OfficeClip.LiveChat.Chat
         protected static ChatUser customer = new ChatUser { IsEndUser = true };
         protected static bool isConnected = false;
         protected static int AgentUserId = 1;
+
+        public override Task OnDisconnected(bool stopCalled)
+        {
+            CustomerConnection.broadcastMessage("System", "Disconnection", true);
+            return base.OnDisconnected(stopCalled);
+        }
 
         private dynamic AgentConnection
         {
